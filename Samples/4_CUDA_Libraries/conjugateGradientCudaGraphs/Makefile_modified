@@ -1,0 +1,5 @@
+all:
+	/opt/nvidia/hpc_sdk/Linux_x86_64/21.9/compilers/bin/nvcc -ccbin g++ -I../../../Common  -m64    --std=c++11 -lcusparse -gencode arch=compute_80,code=sm_80 -gencode arch=compute_80,code=compute_80 -o conjugateGradientCudaGraphs_mainGraph.o -c conjugateGradientCudaGraphs_mainGraph.cu
+	/opt/nvidia/hpc_sdk/Linux_x86_64/21.9/compilers/bin/nvcc -ccbin g++   -m64      -gencode arch=compute_80,code=sm_80 -gencode arch=compute_80,code=compute_80 -o conjugateGradientCudaGraphs_mainGraph conjugateGradientCudaGraphs_mainGraph.o  -lcublas_static -lcublasLt_static -lcusparse -lculibos
+	mkdir -p ../../../bin/x86_64/linux/release
+	cp conjugateGradientCudaGraphs_mainGraph ../../../bin/x86_64/linux/release
